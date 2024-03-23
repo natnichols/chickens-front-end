@@ -12,7 +12,7 @@ const Landing = () => {
   return (
     <main>
       <RiveComponent />
-      <h1>REACT PUPPIES</h1>
+      <h1>REACT CHICKENS</h1>
     </main>
   )
 }

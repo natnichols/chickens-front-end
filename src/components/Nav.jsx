@@ -9,6 +9,7 @@ const Nav = () => {
     <nav>
       <NavLink to="/"><img src={logo} alt="A cute puppy" /></NavLink>
       <NavLink to="/chickens">Chicken List</NavLink>
+      <NavLink to="/chickens/new">New Chicken</NavLink>
     </nav>
   )
 }

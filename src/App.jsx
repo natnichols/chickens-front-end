@@ -8,6 +8,7 @@ import * as chickenService from './services/chickenService'
 // pages
 import Landing from './pages/Landing/Landing'
 import ChickenList from './pages/ChickenList/ChickenList'
+import NewChicken from './pages/NewChicken/NewChicken'
 
 // components
 import Nav from './components/Nav'
@@ -16,6 +17,7 @@ import Nav from './components/Nav'
 import './App.css'
 
 function App() {
+  const navigate = useNavigate()
   const [chickens, setChickens] = useState([])
 
   useEffect(() => {
@@ -26,12 +28,21 @@ function App() {
     fetchChickens()
   }, [])
 
+  const handleAddChicken = async formData => {
+    const newChicken = await chickenService.create(formData)
+    setChickens([newChicken, ...chickens])
+    navigate('/chickens')
+  }
+
   return (
     <>
       <Nav />
       <Routes>
         <Route path='/' element={<Landing />} />
         <Route path='/chickens' element={<ChickenList chickens={chickens} />} />
+        <Route path='/chickens/new' element={
+          <NewChicken handleAddChicken={handleAddChicken} />
+        } />
       </Routes>
     </>
   )

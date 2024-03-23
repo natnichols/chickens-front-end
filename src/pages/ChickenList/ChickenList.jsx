@@ -1,3 +1,6 @@
+// components
+import ChickenCard from '../../components/ChickenCard'
+
 // css
 import './ChickenList.css'
 
@@ -11,7 +14,7 @@ const ChickenList = (props) => {
       <ul>
         {props.chickens.map(chicken => (
           <li key={chicken._id}>
-            {chicken.name}
+            <ChickenCard chicken={chicken} key={chicken._id} />
           </li>
         ))}
       </ul>

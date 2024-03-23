@@ -34,12 +34,22 @@ function App() {
     navigate('/chickens')
   }
 
+  const handleRemoveChicken = async chickenId => {
+    const removedChicken = await chickenService.delete(chickenId)
+    setChickens(chickens.filter((chicken) => chicken._id !== removedChicken._id))
+  }
+
   return (
     <>
       <Nav />
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/chickens' element={<ChickenList chickens={chickens} />} />
+        <Route path='/chickens' element={
+          <ChickenList 
+            chickens={chickens} 
+            handleRemoveChicken={handleRemoveChicken}
+          />
+        } />
         <Route path='/chickens/new' element={
           <NewChicken handleAddChicken={handleAddChicken} />
         } />

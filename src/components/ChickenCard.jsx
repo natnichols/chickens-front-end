@@ -1,8 +1,8 @@
-const ChickenCard = ({ chicken }) => {
+const ChickenCard = ({ chicken, handleRemoveChicken }) => {
   return (
     <li>
       <section>
-        <button>
+        <button onClick={() => handleRemoveChicken(chicken._id)}>
           X
         </button>
       </section>

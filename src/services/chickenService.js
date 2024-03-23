@@ -23,3 +23,18 @@ export async function create(formData) {
     console.log(`🚨`, err)
   }
 }
+
+async function deleteChicken(chickenId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${chickenId}`, {
+      method: 'DELETE'
+    })
+    return res.json()
+  } catch (err) {
+    console.log(`🚨`, err)
+  }
+}
+
+export {
+  deleteChicken as delete
+}
